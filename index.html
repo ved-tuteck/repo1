@@ -45,5 +45,31 @@
       zIndex: 9999
     };
 </script>
+<script>
+    window.loadconfig = {
+      primaryColor: "#1d4ed8",
+      accentColor: "#9333ea",
+      logoUrl: "",
+      position: "bottom-right",
+      buttonSize: "medium",
+      chatTitle: "Support Assistant",
+      placeholder: "Ask me anything...",
+      greeting: "Hi there! Need help?",
+      maxHeight: "500px",
+      maxWidth: "400px",
+      windowSize: "standard",
+      zIndex: 9999
+    };
+</script>
+<script src="https://d2wb7z5rbtrbg.cloudfront.net"></script>
+<script>
+  window.onload = function () {
+    if (window.loadChatbot) {
+      window.loadChatbot();
+    } else {
+      console.error("Chatbot script failed to load.");
+    }
+  };
+</script>
 
 </html>
