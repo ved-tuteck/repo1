@@ -38,49 +38,49 @@ export default function Sales() {
   const totalTarget = monthlyRevenue[monthlyRevenue.length - 1].target;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-      <div className="max-w-7xl mx-auto px-4 py-20">
-        <div className="mb-12">
-          <h1 className="text-5xl font-bold mb-4">Sales Analytics</h1>
-          <p className="text-gray-300 text-lg">Comprehensive revenue insights across domains and services</p>
+    <section id="sales" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Sales Analytics</h2>
+          <p className="text-xl text-gray-600">Comprehensive revenue insights across domains and services</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-gray-800/50 backdrop-blur border border-gray-700 rounded-lg p-6">
-            <p className="text-gray-400 text-sm mb-2">Total Annual Revenue</p>
-            <p className="text-4xl font-bold text-blue-400">${(totalRevenue / 1000).toFixed(0)}K</p>
-            <p className="text-green-400 text-sm mt-2">↑ 15% from last year</p>
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200">
+            <p className="text-gray-600 text-sm mb-2">Total Annual Revenue</p>
+            <p className="text-3xl font-bold text-blue-600">${(totalRevenue / 1000).toFixed(0)}K</p>
+            <p className="text-green-600 text-sm mt-2">↑ 15% from last year</p>
           </div>
-          <div className="bg-gray-800/50 backdrop-blur border border-gray-700 rounded-lg p-6">
-            <p className="text-gray-400 text-sm mb-2">Annual Target</p>
-            <p className="text-4xl font-bold text-blue-400">${(totalTarget / 1000).toFixed(0)}K</p>
-            <p className="text-blue-400 text-sm mt-2">On track for Q4</p>
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200">
+            <p className="text-gray-600 text-sm mb-2">Annual Target</p>
+            <p className="text-3xl font-bold text-blue-600">${(totalTarget / 1000).toFixed(0)}K</p>
+            <p className="text-blue-600 text-sm mt-2">On track for Q4</p>
           </div>
-          <div className="bg-gray-800/50 backdrop-blur border border-gray-700 rounded-lg p-6">
-            <p className="text-gray-400 text-sm mb-2">Average Monthly Revenue</p>
-            <p className="text-4xl font-bold text-blue-400">${(totalRevenue / 12 / 1000).toFixed(0)}K</p>
-            <p className="text-green-400 text-sm mt-2">↑ 12% growth rate</p>
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200">
+            <p className="text-gray-600 text-sm mb-2">Average Monthly Revenue</p>
+            <p className="text-3xl font-bold text-blue-600">${(totalRevenue / 12 / 1000).toFixed(0)}K</p>
+            <p className="text-green-600 text-sm mt-2">↑ 12% growth rate</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-          <div className="bg-gray-800/50 backdrop-blur border border-gray-700 rounded-lg p-6">
-            <h2 className="text-2xl font-bold mb-6">Revenue by Domain</h2>
+          <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 className="text-xl font-bold text-gray-900 mb-6">Revenue by Domain</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={revenueByDomain}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="domain" angle={-45} textAnchor="end" height={100} tick={{ fill: '#9ca3af', fontSize: 12 }} />
-                <YAxis tick={{ fill: '#9ca3af' }} />
-                <Tooltip contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '8px' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="domain" angle={-45} textAnchor="end" height={100} tick={{ fill: '#6b7280', fontSize: 12 }} />
+                <YAxis tick={{ fill: '#6b7280' }} />
+                <Tooltip contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }} />
                 <Legend />
-                <Bar dataKey="revenue" fill="#3b82f6" name="Actual Revenue" />
-                <Bar dataKey="target" fill="#60a5fa" name="Target" />
+                <Bar dataKey="revenue" fill="#2563eb" name="Actual Revenue" />
+                <Bar dataKey="target" fill="#93c5fd" name="Target" />
               </BarChart>
             </ResponsiveContainer>
           </div>
 
-          <div className="bg-gray-800/50 backdrop-blur border border-gray-700 rounded-lg p-6">
-            <h2 className="text-2xl font-bold mb-6">Revenue Distribution by Service</h2>
+          <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 className="text-xl font-bold text-gray-900 mb-6">Revenue Distribution by Service</h3>
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie data={revenueByService} cx="50%" cy="50%" labelLine={false} label={({ name, percentage }) => `${name}: ${percentage}%`} outerRadius={80} fill="#8884d8" dataKey="value">
@@ -88,33 +88,27 @@ export default function Sales() {
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '8px' }} formatter={(value) => `$${(value / 1000).toFixed(0)}K`} />
+                <Tooltip contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }} formatter={(value) => `$${(value / 1000).toFixed(0)}K`} />
               </PieChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="bg-gray-800/50 backdrop-blur border border-gray-700 rounded-lg p-6">
-          <h2 className="text-2xl font-bold mb-6">Monthly Revenue Trend</h2>
+        <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 className="text-xl font-bold text-gray-900 mb-6">Monthly Revenue Trend</h3>
           <ResponsiveContainer width="100%" height={400}>
             <LineChart data={monthlyRevenue}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-              <XAxis dataKey="month" tick={{ fill: '#9ca3af' }} />
-              <YAxis tick={{ fill: '#9ca3af' }} />
-              <Tooltip contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '8px' }} formatter={(value) => `$${(value / 1000).toFixed(0)}K`} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <XAxis dataKey="month" tick={{ fill: '#6b7280' }} />
+              <YAxis tick={{ fill: '#6b7280' }} />
+              <Tooltip contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }} formatter={(value) => `$${(value / 1000).toFixed(0)}K`} />
               <Legend />
-              <Line type="monotone" dataKey="revenue" stroke="#3b82f6" strokeWidth={3} dot={{ fill: '#3b82f6', r: 5 }} name="Actual Revenue" />
-              <Line type="monotone" dataKey="target" stroke="#60a5fa" strokeWidth={2} strokeDasharray="5 5" dot={{ fill: '#60a5fa', r: 4 }} name="Target" />
+              <Line type="monotone" dataKey="revenue" stroke="#2563eb" strokeWidth={3} dot={{ fill: '#2563eb', r: 5 }} name="Actual Revenue" />
+              <Line type="monotone" dataKey="target" stroke="#93c5fd" strokeWidth={2} strokeDasharray="5 5" dot={{ fill: '#93c5fd', r: 4 }} name="Target" />
             </LineChart>
           </ResponsiveContainer>
         </div>
-
-        <div className="mt-12 text-center">
-          <a href="/" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
-            Back to Home
-          </a>
-        </div>
       </div>
-    </div>
+    </section>
   );
 }
